@@ -1,0 +1,126 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: #3B4049;
+}
+
+/* Wrapper for the envelope */
+.wrapper {
+  height: 200px;
+  width: 300px;
+  background-color: #3760C9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+/* Lids */
+.lid {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 150px solid transparent;
+  transform-origin: top;
+  transition: transform 0.25s linear, opacity 0.5s ease;
+}
+
+/* Lid when closed */
+.lid.one {
+  border-top: 100px solid #658ced;
+  transform: rotateX(0deg);
+  z-index: 3;
+  transition-delay: 0.75s;
+}
+
+/* Lid when opened */
+.lid.two {
+  border-top: 100px solid #3760C9;
+  transform: rotateX(90deg);
+  z-index: 1;
+  transition-delay: 0.5s;
+}
+
+/* Fade lids out when the envelope is open */
+.wrapper.open .lid {
+  opacity: 0;
+}
+
+/* Envelope body */
+.envelope {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-top: 100px solid transparent;
+  border-right: 150px solid #C4DFF0;
+  border-bottom: 100px solid #C4DFF0;
+  border-left: 150px solid #a4d4f2;
+  z-index: 3;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+/* Hover animation for the envelope */
+.wrapper:hover .envelope {
+  transform: scale(1.05);
+}
+
+/* Hide envelope after opening */
+.envelope.hide {
+  opacity: 0;
+}
+
+/* Letter styles */
+.letter {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+  transform: scale(0.5);
+  transform-origin: center center;
+}
+
+.letter p {
+  text-align: center;
+  font-size: 4px;
+  margin: 10px;
+  color: #3B4049;
+}
+
+/* Fullscreen (zoom) effect on the letter */
+.letter.fullscreen {
+  transform: scale(4); /* Adjust scale factor as needed */
+  border-radius: 0;
+}
+
+/* Instruction text below the envelope */
+.instruction {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+} 
